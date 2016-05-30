@@ -212,7 +212,7 @@ var PrefMatrixApp = React.createClass({
   getInitialState: function() {
     return {
       phase: PrefMatrixApp.PHASE.ITEM_SETTING,
-      items: ['a', 'b', 'c'],
+      items: ['Item 1', 'Item 2', 'Item 3'],
       comparisonResults: []
     };
   },
