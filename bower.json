@@ -1,0 +1,25 @@
+{
+  "name": "permacv",
+  "authors": [
+    "Miklos Danka danka.miklos@gmail.com"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "react": "^15.0.2",
+    "jquery": "^2.2.3",
+    "bootstrap": "^3.3.6",
+    "moment": "^2.13.0",
+    "javascript-md5": "^2.3.0",
+    "babel": "*"
+  }
+}
