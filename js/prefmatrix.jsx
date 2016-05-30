@@ -30,19 +30,29 @@ var PhaseItemSetting = React.createClass({
   render: function() {
     var createItemLine = function(itemText, itemIndex) {
       return (
-        <div className="item-selection-line" key={itemIndex}>
-          <input className="item-selection-line-input" data-index={itemIndex} value={itemText} onChange={this.onItemChange} placeholder="Enter new item..." />
-          <button className="item-selection-line-remove" data-index={itemIndex} onClick={this.onItemRemove} type="button" className="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <div className="row item-selection-line" key={itemIndex}>
+          <div className="col-sm-4 col-sm-offset-4 col-xs-12">
+            <input className="item-selection-line-input form-control" data-index={itemIndex} value={itemText} onChange={this.onItemChange} placeholder="Enter new item..." />
+            <button className="item-selection-line-remove" data-index={itemIndex} onClick={this.onItemRemove} type="button" className="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          </div>
         </div>
       );
     };
 
     return (
       <div className="item-selection">
-        <h3>Which items would you like to compare?</h3>
-        <ul className="item-selection-list">{this.props.items.map(createItemLine, this)}</ul>
-        <div className="item-selection-add-new">
-          <button type="button" className="btn btn-default btn-sm" onClick={this.onItemAdd}>Add new</button>
+        <h3 className="item-selection-header">Which items would you like to compare?</h3>
+
+        <form className="form-inline">
+          <div className="item-selection-list">{this.props.items.map(createItemLine, this)}</div>
+        </form>
+
+        <div className="row">
+          <div className="col-sm-2 col-sm-offset-5 col-xs-12">
+            <div className="item-selection-add-new">
+              <button type="button" className="btn btn-default btn-sm" onClick={this.onItemAdd}>Add new</button>
+            </div>
+          </div>
         </div>
       </div>
     )
@@ -117,12 +127,20 @@ var PhaseItemComparison = React.createClass({
     var nextItems = [this.props.items[nextPair[0]], this.props.items[nextPair[1]]]
     return (
       <div className="item-comparison">
-        <h3>Which one do you prefer?</h3>
-        <p className="item-comparison-choices">
-          <button type="button" className="btn btn-default btn-lg" data-index={nextPair[0]} onClick={this.makeChoice}>{nextItems[0]}</button>
-          &nbsp;or&nbsp;
-          <button type="button" className="btn btn-default btn-lg" data-index={nextPair[1]} onClick={this.makeChoice}>{nextItems[1]}</button>?
-        </p>
+        <div className="row">
+          <div className="col-xs-12">
+            <h3 className="item-comparison-header">Which one do you prefer?</h3>
+          </div>
+        </div>
+        <div className="item-comparison-choices">
+          <div className="row">
+            <div className="col-sm-6 col-sm-offset-3 col-xs-12">
+              <button type="button" className="btn btn-default btn-lg" data-index={nextPair[0]} onClick={this.makeChoice}>{nextItems[0]}</button>
+              <div className="separator">or</div>
+              <button type="button" className="btn btn-default btn-lg" data-index={nextPair[1]} onClick={this.makeChoice}>{nextItems[1]}</button>
+            </div>
+          </div>
+        </div>
       </div>
     );
   }
@@ -243,11 +261,23 @@ var PrefMatrixApp = React.createClass({
     if (this.state.phase == PrefMatrixApp.PHASE.ITEM_SETTING) {
       panelComponents = (
         <div className="pref-matrix-app">
-          <p className="phase-title">Step 1/3: Choose the items you wish to compare</p>
-          {buildResetButton.call(this)}
+          <div className="row">
+            <div className="col-md-12">
+              <p className="phase-title">Step 1/3: Choose the items you wish to compare</p>
+            </div>
+          </div>
+          <div className="row">
+            <div className="col-md-12">
+              {buildResetButton.call(this)}
+            </div>
+          </div>
           <PhaseItemSetting items={this.state.items} onItemsChange={this.handleItemsChange} />
-          <div className="start-comparison">
-            <button type="button" className="btn btn-primary btn-md" onClick={this.startComparison}>Start Comparison</button>
+          <div className="row">
+            <div className="col-sm-4 col-sm-offset-4 col-xs-12">
+              <div className="start-comparison">
+                <button type="button" className="btn btn-primary btn-md" onClick={this.startComparison}>Start Comparison</button>
+              </div>
+            </div>
           </div>
         </div>
       )

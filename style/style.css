@@ -4,37 +4,40 @@
 .pref-matrix-app .phase-title {
   text-align: center;
 }
-.pref-matrix-app .start-comparison {
-  text-align: center;
-  width: 250px;
-  margin: auto;
+.pref-matrix-app .start-comparison button {
+  width: 100%;
 }
 .item-selection {
+  margin: 30px 0;
+}
+.item-selection .item-selection-header {
   text-align: center;
-  margin: 30px 0 30px 0;
 }
 .item-selection .item-selection-list {
-  text-align: left;
+  margin: 20px 0;
   width: 100%;
 }
 .item-selection .item-selection-list .item-selection-line {
-  width: 250px;
-  margin: auto;
+  margin: 5px 0;
 }
 .item-selection .item-selection-list .item-selection-line .item-selection-line-input {
-  width: 200px;
+  width: 90%;
+  display: inline-block;
 }
-.item-selection .item-selection-add-new {
-  text-align: center;
-  width: 250px;
-  margin: auto;
+.item-selection .item-selection-add-new button {
+  width: 100%;
 }
-.item-comparison {
+.item-comparison .item-comparison-header {
   text-align: center;
 }
 .item-comparison .item-comparison-choices {
-  width: 100%;
+  margin: 20px 0;
+  text-align: center;
 }
 .item-comparison .item-comparison-choices button {
-  margin: 0 20px;
+  width: 35%;
+}
+.item-comparison .item-comparison-choices .separator {
+  display: inline-block;
+  width: 25%;
 }
