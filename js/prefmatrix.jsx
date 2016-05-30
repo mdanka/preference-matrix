@@ -263,7 +263,7 @@ var PrefMatrixApp = React.createClass({
         <div className="pref-matrix-app">
           <div className="row">
             <div className="col-md-12">
-              <p className="phase-title">Step 1/3: Choose the items you wish to compare</p>
+              <p className="phase-title">Step 1/3: Selection</p>
             </div>
           </div>
           <div className="row">
@@ -284,7 +284,7 @@ var PrefMatrixApp = React.createClass({
     } else if (this.state.phase == PrefMatrixApp.PHASE.ITEM_COMPARISON) {
       panelComponents = (
         <div className="pref-matrix-app">
-          <p className="phase-title">Step 2/3: Compare the items</p>
+          <p className="phase-title">Step 2/3: Comparison</p>
           {buildResetButton.call(this)}
           <PhaseItemComparison items={this.state.items} onComparisonFinish={this.handleComparisonFinish} />
         </div>
