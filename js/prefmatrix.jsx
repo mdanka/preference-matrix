@@ -190,8 +190,10 @@ var PhaseResultsViewing = React.createClass({
     };
 
     return (
-      <div>
-        <ul>{itemsAndWinsSorted.map(createResultLine, this)}</ul>
+      <div className="row comparison-results">
+        <div className="col-xs-12 col-sm-4 col-sm-offset-4">
+          <ul>{itemsAndWinsSorted.map(createResultLine, this)}</ul>
+        </div>
       </div>
     )
   }
