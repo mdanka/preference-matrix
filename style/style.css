@@ -13,6 +13,13 @@
 .pref-matrix-app .start-comparison button {
   width: 100%;
 }
+.pref-matrix-app .phase-status {
+  text-align: center;
+  margin: 30px 0 10px 0;
+}
+.pref-matrix-app .phase-status [data-selected='yes'] {
+  font-weight: bold;
+}
 .item-selection {
   margin: 30px 0;
 }

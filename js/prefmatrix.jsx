@@ -197,6 +197,28 @@ var PhaseResultsViewing = React.createClass({
   }
 });
 
+var PhaseStatus = React.createClass({
+  propTypes: {
+    phase: React.PropTypes.number.isRequired
+  },
+
+  render: function() {
+    return (
+      <div className="row phase-status">
+        <div className="col-xs-4 col-sm-2 col-sm-offset-3" data-selected={this.props.phase == 0 ? 'yes' : 'no'}>
+          Step 1: Selection
+        </div>
+        <div className="col-xs-4 col-sm-2" data-selected={this.props.phase == 1 ? 'yes' : 'no'}>
+          Step 2: Comparison
+        </div>
+        <div className="col-xs-4 col-sm-2" data-selected={this.props.phase == 2 ? 'yes' : 'no'}>
+          Step 3: Results
+        </div>
+      </div>
+    )
+  }
+});
+
 
 var PrefMatrixApp = React.createClass({
   statics: {
@@ -261,16 +283,6 @@ var PrefMatrixApp = React.createClass({
     if (this.state.phase == PrefMatrixApp.PHASE.ITEM_SETTING) {
       panelComponents = (
         <div className="pref-matrix-app">
-          <div className="row">
-            <div className="col-md-12">
-              <p className="phase-title">Step 1/3: Selection</p>
-            </div>
-          </div>
-          <div className="row">
-            <div className="col-md-12">
-              {buildResetButton.call(this)}
-            </div>
-          </div>
           <PhaseItemSetting items={this.state.items} onItemsChange={this.handleItemsChange} />
           <div className="row">
             <div className="col-sm-4 col-sm-offset-4 col-xs-12">
@@ -279,22 +291,36 @@ var PrefMatrixApp = React.createClass({
               </div>
             </div>
           </div>
+          <PhaseStatus phase={0} />
+          <div className="row">
+            <div className="col-xs-12">
+              {buildResetButton.call(this)}
+            </div>
+          </div>
         </div>
       )
     } else if (this.state.phase == PrefMatrixApp.PHASE.ITEM_COMPARISON) {
       panelComponents = (
         <div className="pref-matrix-app">
-          <p className="phase-title">Step 2/3: Comparison</p>
-          {buildResetButton.call(this)}
           <PhaseItemComparison items={this.state.items} onComparisonFinish={this.handleComparisonFinish} />
+          <PhaseStatus phase={1} />
+          <div className="row">
+            <div className="col-xs-12">
+              {buildResetButton.call(this)}
+            </div>
+          </div>
         </div>
       )
     } else if (this.state.phase == PrefMatrixApp.PHASE.RESULTS_VIEWING) {
       panelComponents = (
         <div className="pref-matrix-app">
-          <p className="phase-title">Step 3/3: Results</p>
-          {buildResetButton.call(this)}
           <PhaseResultsViewing items={this.state.items} comparisonResults={this.state.comparisonResults} />
+          <PhaseStatus phase={2} />
+          <div className="row">
+            <div className="col-xs-12">
+              {buildResetButton.call(this)}
+            </div>
+          </div>
         </div>
       )
     } else {
