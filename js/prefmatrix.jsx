@@ -1,5 +1,3 @@
-
-
 var PhaseItemSetting = React.createClass({
   propTypes: {
     items: React.PropTypes.array.isRequired,
@@ -162,9 +160,6 @@ var PhaseResultsViewing = React.createClass({
       var winningIndex = comparisonResult[0];
       itemWinCount[winningIndex]++;
     });
-    // for (var i = 0; i < this.props.comparisonResults.length; i++) {
-    //   var comparisonResult = this.props.comparisonResults[i]
-    // }
 
     var itemsAndWinsSorted = [];
     itemWinCount.forEach(function(winCount, itemIndex) {
