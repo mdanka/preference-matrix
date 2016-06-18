@@ -20,6 +20,7 @@ var PhaseItemSetting = React.createClass({
 
   onItemRemove: function(e) {
     var itemIndex = e.target.getAttribute('data-index');
+    console.log(itemIndex);
     var newItems = this.props.items.slice();
     newItems.splice(itemIndex, 1);
     this.props.onItemsChange(newItems);
