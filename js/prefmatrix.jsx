@@ -324,6 +324,10 @@ var PrefMatrixApp = React.createClass({
     this.parseUrl();
   },
 
+  canStartComparison: function() {
+    return this.state.items.length > 1;
+  },
+
   render: function() {
     var buildResetButton = function() {
       return (
@@ -343,7 +347,7 @@ var PrefMatrixApp = React.createClass({
           <div className="row">
             <div className="col-sm-4 col-sm-offset-4 col-xs-12">
               <div className="start-comparison">
-                <button type="button" className="btn btn-primary btn-md" onClick={this.startComparison}>Start Comparison</button>
+                <button type="button" disabled={!this.canStartComparison()} className="btn btn-primary btn-md" onClick={this.startComparison}>Start Comparison</button>
               </div>
             </div>
           </div>
