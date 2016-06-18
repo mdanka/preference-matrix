@@ -4,6 +4,9 @@
 .page-description {
   text-align: justify;
 }
+.pref-matrix-app {
+  margin: 0 0 50px 0;
+}
 .pref-matrix-app .header-reset-button {
   text-align: center;
 }
