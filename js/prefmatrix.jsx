@@ -260,14 +260,17 @@ var PrefMatrixApp = React.createClass({
     if (window.location.hash.length <= 1) {
       return;
     }
-    var resultStateEncoded = window.location.hash.substring(1);
-    var resultStateString = window.atob(resultStateEncoded);
-    var resultState = $.parseJSON(resultStateString);
-    this.setState({
-      phase: PrefMatrixApp.PHASE.RESULTS_VIEWING,
-      items: resultState.items,
-      comparisonResults: resultState.comparisonResults
-    })
+    try {
+      var resultStateEncoded = window.location.hash.substring(1);
+      var resultStateString = window.atob(resultStateEncoded);
+      var resultState = $.parseJSON(resultStateString);
+      this.setState({
+        phase: PrefMatrixApp.PHASE.RESULTS_VIEWING,
+        items: resultState.items,
+        comparisonResults: resultState.comparisonResults
+      })
+    } catch (error) {
+    }
   },
 
   handleItemsChange: function(newItems) {
