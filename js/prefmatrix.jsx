@@ -221,7 +221,6 @@ var PhaseStatus = React.createClass({
   }
 });
 
-
 var PrefMatrixApp = React.createClass({
   statics: {
     PHASE: {
@@ -241,6 +240,36 @@ var PrefMatrixApp = React.createClass({
     };
   },
 
+  // Sets the Hash URL depending on the phase. The results phase adds an encoded results JSON, the rest clears it.
+  setUrl: function() {
+    if (this.state.phase != PrefMatrixApp.PHASE.RESULTS_VIEWING) {
+      window.location.hash = '#';
+      return;
+    }
+    var resultState = {
+      items: this.state.items,
+      comparisonResults: this.state.comparisonResults
+    }
+    var resultStateString = JSON.stringify(resultState);
+    var resultStateEncoded = window.btoa(resultStateString);
+    window.location.hash = resultStateEncoded;
+  },
+
+  // Gets the Hash URL and sets the phase and state based on it.
+  parseUrl: function() {
+    if (window.location.hash.length <= 1) {
+      return;
+    }
+    var resultStateEncoded = window.location.hash.substring(1);
+    var resultStateString = window.atob(resultStateEncoded);
+    var resultState = $.parseJSON(resultStateString);
+    this.setState({
+      phase: PrefMatrixApp.PHASE.RESULTS_VIEWING,
+      items: resultState.items,
+      comparisonResults: resultState.comparisonResults
+    })
+  },
+
   handleItemsChange: function(newItems) {
     this.setState({items: newItems});
   },
@@ -249,7 +278,7 @@ var PrefMatrixApp = React.createClass({
     this.setState({
       phase: PrefMatrixApp.PHASE.RESULTS_VIEWING,
       comparisonResults: comparisonResults
-    });
+    }, this.setUrl);
   },
 
   restart: function() {
@@ -260,14 +289,21 @@ var PrefMatrixApp = React.createClass({
       doReset = true;
     }
     if (doReset) {
-      this.setState(this.getInitialState());
+      this.setState(
+        this.getInitialState(),
+        this.setUrl);
     }
   },
 
   startComparison: function() {
     this.setState({
       phase: PrefMatrixApp.PHASE.ITEM_COMPARISON
-    });
+    },
+    this.setUrl);
+  },
+
+  componentWillMount: function() {
+    this.parseUrl();
   },
 
   render: function() {
