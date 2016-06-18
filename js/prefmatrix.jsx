@@ -253,6 +253,7 @@ var PrefMatrixApp = React.createClass({
     var resultStateString = JSON.stringify(resultState);
     var resultStateEncoded = window.btoa(resultStateString);
     window.location.hash = resultStateEncoded;
+    ga_newpageview();
   },
 
   // Gets the Hash URL and sets the phase and state based on it.
