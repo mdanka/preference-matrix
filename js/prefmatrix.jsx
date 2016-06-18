@@ -5,7 +5,7 @@ var PhaseItemSetting = React.createClass({
   },
 
   onItemChange: function(e) {
-    var itemIndex = e.target.getAttribute('data-index');
+    var itemIndex = parseInt(e.target.getAttribute('data-index'));
     var newItemValue = e.target.value;
     var newItems = this.props.items.slice();
     newItems[itemIndex] = newItemValue;
@@ -19,8 +19,7 @@ var PhaseItemSetting = React.createClass({
   },
 
   onItemRemove: function(e) {
-    var itemIndex = e.target.getAttribute('data-index');
-    console.log(itemIndex);
+    var itemIndex = parseInt(e.target.getAttribute('data-index'));
     var newItems = this.props.items.slice();
     newItems.splice(itemIndex, 1);
     this.props.onItemsChange(newItems);
@@ -100,7 +99,7 @@ var PhaseItemComparison = React.createClass({
   makeChoice: function(e) {
     var comparisonsLeftNumber = this.state.comparisonsLeft.length;
     var currentPair = this.state.comparisonsLeft[comparisonsLeftNumber - 1];
-    var itemIndexWinning = e.target.getAttribute('data-index');
+    var itemIndexWinning = parseInt(e.target.getAttribute('data-index'));
     var itemIndexLosing = currentPair[0] == itemIndexWinning ? currentPair[1] : currentPair[0];
     var newComparisonResult = [itemIndexWinning, itemIndexLosing];
     var nextComparisonResults = this.state.comparisonResults.slice();
