@@ -55,5 +55,8 @@
   width: 25%;
 }
 .comparison-results {
-  margin: 30px 0 0 0;
+  margin: 30px 0 70px 0;
+}
+.comparison-results h4 {
+  text-align: center;
 }

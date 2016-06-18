@@ -190,9 +190,26 @@ var PhaseResultsViewing = React.createClass({
     };
 
     return (
-      <div className="row comparison-results">
-        <div className="col-xs-12 col-sm-4 col-sm-offset-4">
-          <ul>{itemsAndWinsSorted.map(createResultLine, this)}</ul>
+      <div className="comparison-results">
+        <div className="row">
+          <div className="col-xs-12 col-sm-4 col-sm-offset-4">
+            <h4>Results</h4>
+          </div>
+        </div>
+        <div className="row">
+          <div className="col-xs-12 col-sm-4 col-sm-offset-4">
+            <ul>{itemsAndWinsSorted.map(createResultLine, this)}</ul>
+          </div>
+        </div>
+        <div className="row">
+          <div className="col-xs-12 col-sm-4 col-sm-offset-4">
+            <h4>Save or share your results</h4>
+          </div>
+        </div>
+        <div>
+          <div className="col-xs-12 col-sm-4 col-sm-offset-4">
+            <input readOnly className="form-control" value={window.location.href} />
+          </div>
         </div>
       </div>
     )
