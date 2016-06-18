@@ -31,7 +31,9 @@ var PhaseItemSetting = React.createClass({
         <div className="row item-selection-line" key={itemIndex}>
           <div className="col-sm-4 col-sm-offset-4 col-xs-12">
             <input className="item-selection-line-input form-control" data-index={itemIndex} value={itemText} onChange={this.onItemChange} placeholder="Enter new item..." />
-            <button className="item-selection-line-remove" data-index={itemIndex} onClick={this.onItemRemove} type="button" className="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <button className="item-selection-line-remove" data-index={itemIndex} onClick={this.onItemRemove} type="button" className="close" aria-label="Close">
+              <span data-index={itemIndex} aria-hidden="true">&times;</span>
+            </button>
           </div>
         </div>
       );
